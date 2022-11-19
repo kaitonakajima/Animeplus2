@@ -1,0 +1,30 @@
+<div class="col-md-8 offset-md-1">
+  <h2>Anime+</h2>
+  <table class="table table-hover table-inverse">
+    <thead>
+      <tr>
+        <th></th>
+        <th>タイトル</th>
+        <th>感想</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @post_animes.each do |post_anime| %>
+      <tr>
+        <td>
+          <%= link_to user_path(post_anime.user) do %>
+            <%= attachment_image_tag post_anime.user, :profile_image, :fill, 80, 80, fallback: "default-image.jpg" %>
+          <% end %>
+        </td>
+        <td>
+          <%= link_to post_anime.title, post_anime_path(post_anime.id) %>
+        </td>
+        <td>
+          <%= post_anime.body %>
+        </td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

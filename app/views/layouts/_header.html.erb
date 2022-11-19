@@ -9,6 +9,28 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav ml-auto">
+          <% if user_signed_in? %>
+          <li>
+            <a class="nav-link text-light" href="/users/<%= current_user.id %>">
+              <i class="fas fa-home"></i> マイページ
+            </a>
+          </li>
+          <li>
+            <a class="nav-link text-light" href="/users">
+              <i class="fas fa-users"></i> ユーザー
+            </a>
+          </li>
+          <li>
+            <a class="nav-link text-light" href="/post_animes">
+              <i class="fas fa-desktop"></i> アニメ
+            </a>
+          </li>
+          <li>
+            <a class="nav-link text-light" rel="nofollow" data-method="delete" href="/users/sign_out">
+              <i class="fas fa-sign-out-alt"></i> ログアウト
+            </a>
+          </li>
+          <% else %>
           <li>
             <a class="nav-link text-light" href="/home/about">
               Anime+の楽しみ方
@@ -24,6 +46,7 @@
               ログイン
             </a>
           </li>
+          <% end %>
         </ul>
       </div>
     </div>
