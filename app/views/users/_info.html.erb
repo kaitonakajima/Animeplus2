@@ -10,9 +10,11 @@
       <th><%= user.introduction %></th>
     </tr>
   </table>
-  <div class="row">
-    <%= link_to edit_user_path(user.id), class: "btn btn-outline-secondary btn-block" do %>
-      <i class="fas fa-user-cog"></i> プロフィールを編集
+  <div class="info-btn row">
+    <% if @user == current_user %>
+      <%= link_to edit_user_path(user.id), class: "btn btn-outline-secondary btn-block" do %>
+        <i class="fas fa-user-cog"></i> プロフィールを編集
+      <% end %>
     <% end %>
     <%= link_to new_post_anime_path, class: "btn btn-outline-secondary btn-block" do %>
       <i class="fas fa-solid fa-plus"></i> 投稿する

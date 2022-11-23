@@ -1,22 +1,47 @@
 <main>
+  <div class="background">
+    <h1>
+      <strong>Anime+</strong>
+    </h1>
+  </div>
   <p id="notice"><%= flash[:notice] %></p>
-  <div class="container">
+  <div class="btn-wrapper col-5 col-sm-3 mx-auto">
+    <% if user_signed_in? %>
+    <% else %>
+      <div>
+        <a class="btn btn-info btn-sm btn-block mt-5 mb-3 sign_in" href="/users/sign_in">ログイン</a>
+      </div>
+      <div>
+        <a class="btn btn-success btn-sm btn-block sign_up" href="/users/sign_up">新規登録</a>
+      </div>
+    <% end %>
+  </div>
+  <div class="container px-5 px-sm-0">
     <div class="row">
-      <div class='mx-auto col-11 col-sm-10 col-lg-8 col-xl-6'>
-        <h1>
-          <strong>Anime+</strong>
-        </h1>
-        <div class="btn-wrapper col-10 mx-auto">
-          <% if user_signed_in? %>
-          <% else %>
-            <div class="row">
-              <a class="btn btn-info btn-sm btn-block mb-3 sign_in" href="/users/sign_in">ログイン</a>
-            </div>
-            <div class="row">
-              <a class="btn btn-success btn-sm btn-block sign_up" href="/users/sign_up">新規登録</a>
-            </div>
+        <div class="search">
+          <%= form_with url: root_path, method: :get, local: true do |f| %>
+            <%= f.label :title_key, 'タイトルで探す' %><br>
+            <%= f.text_field :title_key %>
+            <%= f.submit '検索' %>
           <% end %>
         </div>
+        <table class="table table-hover table-inverse">
+          <tbody>
+            <% @post_animes.each do |post_anime| %>
+            <tr data-href="<%= post_anime_path(post_anime.id) %>">
+              <td>
+                <%= attachment_image_tag post_anime.user, :profile_image, :fill, 80, 80, fallback: "default-image.jpg" %>
+              </td>
+              <td class="title">
+                <%= post_anime.title %>
+              </td>
+              <td>
+                <%= truncate(post_anime.body, length: 50, omission: "...") %>
+              </td>
+            </tr>
+            <% end %>
+          </tbody>
+        </table>
       </div>
     </div>
   </div>

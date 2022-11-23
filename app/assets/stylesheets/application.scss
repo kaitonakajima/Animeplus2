@@ -17,3 +17,12 @@
 @import "bootstrap";
 @import 'font-awesome-sprockets';
 @import 'font-awesome';
+
+.title {
+  white-space: nowrap;
+}
+
+.send_btn[disabled] {
+  background-color: #ddd;
+  cursor: not-allowed;
+}

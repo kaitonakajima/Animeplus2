@@ -8,25 +8,17 @@
       <div class="col-md-8 offset-md-1">
         <h2>Anime+</h2>
         <table class='table table-hover table-inverse'>
-          <thead>
-            <tr>
-              <th></th>
-              <th>タイトル</th>
-              <th>レビュー</th>
-              <th colspan="3"></th>
-            </tr>
-          </thead>
           <tbody>
             <% @post_animes.each do |post_anime| %>
             <tr data-href="<%= post_anime_path(post_anime.id) %>">
               <td>
                 <%= attachment_image_tag post_anime.user, :profile_image, :fill, 80, 80, fallback: "default-image.jpg" %>
               </td>
-              <td>
+              <td class="title">
                 <%= post_anime.title %>
               </td>
               <td>
-                <%= post_anime.body %>
+                <%= truncate(post_anime.body, length: 50, omission: "...") %>
               </td>
             </tr>
             <% end %>

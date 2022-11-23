@@ -4,7 +4,11 @@ class PostAnimesController < ApplicationController
   end
 
   def index
-    @post_animes = PostAnime.all
+    if params[:title_key]
+      @post_animes = PostAnime.where('title LIKE ?', "%#{params[:title_key]}%")
+    else
+      @post_animes = PostAnime.all
+    end
     @user = current_user
   end
 
@@ -17,6 +21,7 @@ class PostAnimesController < ApplicationController
     @post_anime = PostAnime.new(post_anime_params)
     @post_anime.user_id = current_user.id
     if @post_anime.save
+      flash[:notice] = "投稿が完了しました"
       redirect_to post_animes_path
     else
       @post_animes = PostAnime.all
@@ -37,6 +42,7 @@ class PostAnimesController < ApplicationController
   def update
     @post_anime = PostAnime.find(params[:id])
     if @post_anime.update(post_anime_params)
+      flash[:notice] = "投稿が更新されました"
       redirect_to post_anime_path(@post_anime.id)
     else
       render :edit
@@ -54,5 +60,4 @@ class PostAnimesController < ApplicationController
   def post_anime_params
     params.require(:post_anime).permit(:title, :body)
   end
-  
 end

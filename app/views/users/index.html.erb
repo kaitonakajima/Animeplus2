@@ -8,14 +8,6 @@
       <div class="col-md-8 offset-md-1">
         <h2>Anime+</h2>
         <table class="table table-hover table-inverse">
-          <thead>
-            <tr>
-              <th></th>
-              <th>名前</th>
-              <th>自己紹介</th>
-              <th colspan="3"></th>
-            </tr>
-          </thead>
           <tbody>
             <% @users.each do |user| %>
               <tr data-href="<%= user_path(user.id) %>">
