@@ -26,3 +26,44 @@
   background-color: #ddd;
   cursor: not-allowed;
 }
+.background {
+  background-image: url('moujib-aghrout-s9ESRUFnKDg-unsplash.jpg');
+  height: 400px;
+  background-size: cover;
+  background-position: 10% 54%;
+}
+
+h1 {
+  text-stroke: 1px #fff;
+  margin-left: 50px;
+}
+
+p {
+  text-align: center;
+}
+
+.search {
+  margin-top: 40px;
+}
+
+.info-btn {
+  margin-bottom: 50px;
+}
+
+.show-table {
+  width: 100%;
+  margin-bottom: 1rem;
+  color: #212529;
+}
+
+.show-table td {
+  padding: 0.75rem;
+  vertical-align: top;
+  border-top: 1px solid #dee2e6;
+}
+
+@media screen and (max-width: 640px) {
+  .table td {
+    display: block;
+  }
+}
