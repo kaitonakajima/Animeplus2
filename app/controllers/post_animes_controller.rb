@@ -14,7 +14,7 @@ class PostAnimesController < ApplicationController
 
   def show
     @post_anime = PostAnime.find(params[:id])
-    @user = current_user
+    @user = @post_anime.user
   end
 
   def create

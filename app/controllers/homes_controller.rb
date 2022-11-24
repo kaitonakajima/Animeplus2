@@ -10,4 +10,10 @@ class HomesController < ApplicationController
 
   def about
   end
+  
+  private
+  
+  def post_anime_params
+    params.require(:post_anime).permit(:title, :body)
+  end
 end
